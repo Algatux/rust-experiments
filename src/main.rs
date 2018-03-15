@@ -1,3 +1,7 @@
 fn main() {
-    println!("Hello, world!");
+
+    let number: u8 = 10;
+
+    println!("Hello, world! {}", number);
+
 }
