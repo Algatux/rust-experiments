@@ -1,7 +1,10 @@
+
 fn main() {
 
-    let number: u8 = 10;
+    let mut array = Vec::new();
 
-    println!("Hello, world! {}", number);
+    array.push(8i8);
+
+    println!("Hello, world! {}", array[0]);
 
 }
