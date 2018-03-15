@@ -1,15 +1,22 @@
 
-use std::str::FromStr;
+extern crate clap;
+use clap::{Arg, App};
 
 fn main() {
 
-    let mut total: u64 = 0;
+    let matches = App::new("test command")
+        .version("1.0")
+        .author("Alessandro Galli <a.galli85@gmail.com>")
+        .about("Does awesome things")
+        .arg(Arg::with_name("config")
+            .short("c")
+            .long("config")
+            .value_name("FILE")
+            .help("Sets a custom config file")
+            .takes_value(true))
+        .get_matches();
 
-    for str in std::env::args().skip(1) {
-        let number = u64::from_str(&str).expect("error parsing argument");
-        total += number;
-    }
-
-    println!("The sum is {}", total);
+    let config = matches.value_of("config").unwrap_or("default.conf");
+    println!("Value for config: {}", config);
 
 }
