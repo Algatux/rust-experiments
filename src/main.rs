@@ -1,13 +1,12 @@
 
-use std::io;
+extern crate rand;
+
+use rand::Rng;
 
 fn main() {
 
-    let mut string: String = String::new();
+    let randomic_number = rand::thread_rng().gen_range(0, 100);
 
-    println!("please enter a string");
+    println!("Generated random number: {}", randomic_number);
 
-    io::stdin().read_line(&mut string).expect("failed to read from stdIn");
-
-    println!("You wrote: {}", string);
 }
