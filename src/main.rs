@@ -7,25 +7,30 @@ use std::cmp::Ordering;
 
 fn main() {
 
-    let randomic_number = rand::thread_rng().gen_range(0, 100);
+    loop {
 
-    println!("Generated random number: {}", randomic_number);
+        let randomic_number = rand::thread_rng().gen_range(0, 100);
 
-    println!("Please input your number.");
+        println!("Generated random number: {}", randomic_number);
 
-    let mut string: String = String::new();
+        println!("Please input your number.");
 
-    io::stdin().read_line(&mut string)
-        .expect("Failed to read line");
+        let mut string: String = String::new();
 
-    println!("You inserted: {}", string);
+        io::stdin().read_line(&mut string)
+            .expect("Failed to read line");
 
-    let string: u32 = string.trim().parse().expect("Please type a number");
+        println!("You inserted: {}", string);
 
-    match string.cmp(&randomic_number) {
-        Ordering::Less => println!("It's smaller"),
-        Ordering::Equal => println!("It's the same!"),
-        Ordering::Greater => println!("It's bigger"),
+        let string: u32 = string.trim().parse().expect("Please type a number");
+
+        match string.cmp(&randomic_number) {
+            Ordering::Less => println!("It's smaller"),
+            Ordering::Equal => println!("It's the same!"),
+            Ordering::Greater => println!("It's bigger"),
+        }
+
     }
+
 
 }
