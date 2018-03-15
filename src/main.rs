@@ -7,11 +7,9 @@ use std::cmp::Ordering;
 
 fn main() {
 
+    let randomic_number = rand::thread_rng().gen_range(0, 100);
+
     loop {
-
-        let randomic_number = rand::thread_rng().gen_range(0, 100);
-
-        println!("Generated random number: {}", randomic_number);
 
         println!("Please input your number.");
 
@@ -20,14 +18,24 @@ fn main() {
         io::stdin().read_line(&mut string)
             .expect("Failed to read line");
 
-        println!("You inserted: {}", string);
+        let string: u32 = match string.trim().parse()  {
+            Ok(num) => num,
+            Err(e) => {
+                println!("Error: {}", e);
+                continue
+            }
+        };
 
-        let string: u32 = string.trim().parse().expect("Please type a number");
+        println!("You inserted: {}", string);
+        println!("Generated random number: {}", randomic_number);
 
         match string.cmp(&randomic_number) {
             Ordering::Less => println!("It's smaller"),
-            Ordering::Equal => println!("It's the same!"),
-            Ordering::Greater => println!("It's bigger"),
+            Ordering::Greater => println!("It's the same!"),
+            Ordering::Equal => {
+                println!("It's bigger");
+                break;
+            }
         }
 
     }
