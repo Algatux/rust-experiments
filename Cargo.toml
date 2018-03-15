@@ -1,0 +1,6 @@
+[package]
+name = "rust-experiments"
+version = "0.1.0"
+authors = ["Alessandro Galli <a.galli85@gmail.com>"]
+
+[dependencies]
